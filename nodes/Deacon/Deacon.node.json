@@ -1,0 +1,18 @@
+{
+	"node": "@heydeacon/n8n-nodes-deacon.deacon",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Communication", "Development"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/heydeacon/n8n-nodes-deacon?tab=readme-ov-file#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://heydeacon.com/docs/api"
+			}
+		]
+	}
+}
