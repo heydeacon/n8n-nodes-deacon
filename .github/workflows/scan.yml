@@ -25,4 +25,10 @@ jobs:
           node-version: 'lts/*'
 
       - name: Scan
-        run: npx -y @n8n/scan-community-package "@heydeacon/n8n-nodes-deacon@${{ inputs.version }}"
+        # Its progress lines only print to a terminal, so its output is captured and printed whole.
+        run: |
+          set +e
+          npx -y @n8n/scan-community-package "@heydeacon/n8n-nodes-deacon@${{ inputs.version }}" > scan.log 2>&1
+          status=$?
+          cat scan.log
+          exit $status
