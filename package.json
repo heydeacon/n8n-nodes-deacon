@@ -1,6 +1,6 @@
 {
 	"name": "@heydeacon/n8n-nodes-deacon",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Deacon nodes for n8n: start a workflow when a visitor reports a bug, leaves their email or asks for a person, then reply, add to what Deacon knows or mark a bug done.",
 	"license": "MIT",
 	"homepage": "https://heydeacon.com/docs/api",
