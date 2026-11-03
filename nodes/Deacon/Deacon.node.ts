@@ -147,7 +147,7 @@ async function run(
 				{
 					itemIndex,
 					description:
-						'Deacon puts a question in a topic after answering it, and only once another person asks about the same thing. Try again later, or mark the topic done by its ID.',
+						'Deacon puts a question in a topic some time after answering it. Try again later, or mark the topic done by its ID.',
 				},
 			);
 		}

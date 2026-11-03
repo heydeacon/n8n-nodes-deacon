@@ -32,6 +32,31 @@ describe('bugReportTopicOf', () => {
 		).toBe('h4mzq8tv');
 	});
 
+	it('finds it on an older chat, where the answer carries the question and its topic', () => {
+		expect(
+			bugReportTopicOf({
+				id: 'khfr6wb5',
+				messages: [
+					message({
+						by: 'deacon',
+						type: 'answer',
+						untrusted: { text: 'Yes. Press Start timer.', question: 'Can I track time?' },
+						intent: 'capability',
+						topic_id: 'qd5w6mn9',
+					}),
+					message({
+						by: 'deacon',
+						type: 'answer',
+						untrusted: { text: null, question: 'Sign in does nothing in Safari' },
+						intent: 'bug_report',
+						topic_id: 'y3gt3wnv',
+						topic_type: 'bug',
+					}),
+				],
+			}),
+		).toBe('y3gt3wnv');
+	});
+
 	it('is null while no bug report in the chat has a topic yet', () => {
 		expect(
 			bugReportTopicOf({
