@@ -10,7 +10,7 @@ export const EVENT_TYPES: INodePropertyOptions[] = [
 		name: 'Chat Ended',
 		value: 'conversation.ended',
 		description:
-			'The visitor starts a new chat, or it goes quiet and Deacon closes it. Holds the whole chat.',
+			"The visitor starts a new chat, or it goes quiet and Deacon closes it. Holds the chat's messages, a long chat's cut to fit in 256 KB by leaving out the oldest.",
 	},
 	{
 		name: 'Chat Started',
@@ -107,9 +107,10 @@ function sameEvents(left: string[], right: string[]): boolean {
  *
  * - `keep` is the one this trigger made, if it's still on and sends the events chosen now. Its
  *   secret is the one the trigger holds.
- * - `remove` is every other webhook at this URL: one Deacon turned off, one sending events no
- *   longer chosen, or one whose secret the trigger no longer holds. Each takes one of the key's
- *   10 places and could never be checked, so a fresh one replaces them.
+ * - `remove` is every other webhook at this URL: one Deacon turned off after 5 days of failures,
+ *   one sending events no longer chosen, or one whose secret the trigger no longer holds. Each
+ *   takes one of the key's 10 places and could never be checked, so a fresh one replaces them.
+ *   One that answered 410 Gone is never found here: Deacon removes a key's webhook itself then.
  */
 export function reconcileWebhooks(
 	onDeacon: WebhookOnDeacon[],

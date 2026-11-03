@@ -35,14 +35,14 @@ A reply sent with a key goes out under the name of the person who made it.
 
 Starts a workflow when one of these happens in a chat on your site:
 
-| Event                            | Sent when                                                                                             |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Visitor Reported a Bug           | Deacon decides a question is reporting something broken. Once per chat.                               |
-| Visitor Left Their Email         | A visitor leaves their email. Once per chat.                                                          |
-| Visitor Asked for a Person       | A visitor asks to talk to a person.                                                                   |
-| Visitor Wrote Back to a Teammate | A visitor sends a message in a chat a teammate has taken over.                                        |
-| Visitor Asked for a Feature      | Deacon decides a question is asking for something your product doesn't do. Once per chat.             |
-| Chat Ended                       | The visitor starts a new chat, or it goes quiet and Deacon closes it. The event holds the whole chat. |
+| Event                            | Sent when                                                                                                                                                              |
+| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Visitor Reported a Bug           | Deacon decides a question is reporting something broken. Once per chat.                                                                                                |
+| Visitor Left Their Email         | A visitor leaves their email. Once per chat.                                                                                                                           |
+| Visitor Asked for a Person       | A visitor asks to talk to a person.                                                                                                                                    |
+| Visitor Wrote Back to a Teammate | A visitor sends a message in a chat a teammate has taken over.                                                                                                         |
+| Visitor Asked for a Feature      | Deacon decides a question is asking for something your product doesn't do. Once per chat.                                                                              |
+| Chat Ended                       | The visitor starts a new chat, or it goes quiet and Deacon closes it. The event holds the chat's messages. A long chat's are cut to fit in 256 KB, keeping the newest. |
 
 When the workflow is activated, the trigger adds its own webhook to Deacon through the API, and deletes it when the workflow is deactivated. It shows on Integrations under the key's name. Each delivery is checked against the webhook's signing secret, and anything else gets a 401. Pings from **Send test** are answered without starting the workflow.
 
