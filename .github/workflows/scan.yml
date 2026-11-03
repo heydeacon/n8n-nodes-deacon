@@ -19,7 +19,7 @@ jobs:
       contents: read
 
     steps:
-      # Node 22, as on this machine, where the scan prints its results; on Node 26 it exits 1 silently.
+      # Node 22: on Node 26 the scan exits 1 without printing anything.
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
