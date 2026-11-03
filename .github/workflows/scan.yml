@@ -19,10 +19,11 @@ jobs:
       contents: read
 
     steps:
+      # Node 22, as on this machine, where the scan prints its results; on Node 26 it exits 1 silently.
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
+          node-version: '22'
 
       - name: Scan
         # Its progress lines only print to a terminal, so its output is captured and printed whole.
