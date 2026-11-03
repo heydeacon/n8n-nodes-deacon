@@ -1,0 +1,28 @@
+# Runs n8n's own community package scan against a published version, the check n8n runs before
+# it verifies a node. Run it by hand from the Actions tab after a release has finished processing.
+
+name: Scan
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The published version to scan, such as 0.1.1'
+        required: true
+
+jobs:
+  scan:
+    name: n8n community package scan
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Scan
+        run: npx -y @n8n/scan-community-package "@heydeacon/n8n-nodes-deacon@${{ inputs.version }}"
